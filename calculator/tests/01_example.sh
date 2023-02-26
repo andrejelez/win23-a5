@@ -31,7 +31,22 @@ if $CALCULATOR 3 @ 2; then  # If the return code of $PROGRAM is zero (i.e. succe
 fi
 
 # Test 03: Ensure multiplication works
-if [[ $($CALCULATOR 2 * 3) -ne 6 ]]; then
+if [[ $($CALCULATOR 2 '*' 3) -ne 6 ]]; then
   echo 'ERROR! A valid run of the calculator (2 * 3) failed to produce 6 as an output!'
+  exit 1
+fi
+
+if [[ $($CALCULATOR 1 '*' 0) -ne 0 ]]; then
+  echo 'ERROR! A valid run of the calculator (1 * 0) failed to produce 0 as an output!'
+  exit 1
+fi
+
+if [[ $($CALCULATOR 4 / 2) -ne 2 ]]; then
+  echo 'ERROR! A valid run of the calculator (4 / 2) failed to produce 2 as an output!'
+  exit 1
+fi
+
+if [[ $($CALCULATOR 5 - 2) -ne 3 ]]; then
+  echo 'ERROR! A valid run of the calculator (5 - 2) failed to produce 3 as an output!'
   exit 1
 fi
